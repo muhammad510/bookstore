@@ -5,14 +5,12 @@ import Banner from '../components/Banner'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 
-function Course() {
+function Signup() {
   return (
     <>
-      <Navbar />
-      <Banner />
-      <Card />
+      <Navbar />     
       <Footer />
     </>
   )
 }
-export default Course
+export default Signup

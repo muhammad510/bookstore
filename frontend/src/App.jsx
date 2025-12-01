@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Home from './Pages/Home'
 import Course from './Pages/Course'
+import Login from './Pages/Login'
+import Signup from './Pages/Signup'
 
 import { Routes, Route } from "react-router-dom"
 // import './App.css'
@@ -17,7 +19,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={<Course />} />         */}
+        <Route path="/course" element={<Course />} />        
+        <Route path="/login" element={<Login />} />        
+        <Route path="/signup" element={<Signup />} />        
       </Routes>
 
     </>

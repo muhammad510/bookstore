@@ -1,18 +1,18 @@
 import { useState } from 'react'
 
 import Navbar from '../components/Navbar'
-import Banner from '../components/Banner'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 
-function Course() {
+function Login() {
   return (
     <>
       <Navbar />
-      <Banner />
-      <Card />
+      <div>
+        <h3 className='text-center'>Hello World</h3>
+      </div>
       <Footer />
     </>
   )
 }
-export default Course
+export default Login

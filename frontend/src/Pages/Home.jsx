@@ -8,11 +8,10 @@ import Footer from './../components/Footer'
 function Home() {
   return (
     <>
-
       <Navbar />
-      {/* <Banner />
+      <Banner />
       <Card />
-      <Footer /> */}
+      <Footer />
     </>
   )
 }
