@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/muhammad510/bookstore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhammad510/bookstore/issues"
+  },
+  "homepage": "https://github.com/muhammad510/bookstore#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.0",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.0.1"
+  }
+}
