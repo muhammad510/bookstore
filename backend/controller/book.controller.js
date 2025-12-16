@@ -11,3 +11,25 @@ export const getBook = async (req, res) => {
     }
 
 };
+
+export const addBook = async (req, res) => {
+  try {
+    const { name, title, category, price } = req.body;
+
+    const book = new Book({
+      name,
+      title: title,
+      category: category,
+      price: price,
+    });
+
+    await book.save();
+
+    res.status(201).json({
+      message: "Book saved successfully",
+      data: book,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

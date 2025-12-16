@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 import Course from './Pages/Course'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
+import Add from './Pages/Add'
 
 import { Routes, Route } from "react-router-dom"
 // import './App.css'
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course" element={<Course />} />        
+        <Route path="/add" element={<Add />} />        
         <Route path="/login" element={<Login />} />        
         <Route path="/signup" element={<Signup />} />        
       </Routes>
