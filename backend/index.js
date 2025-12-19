@@ -7,38 +7,33 @@ import bookRoute from "./route/book.route.js";
 dotenv.config();
 
 const app = express();
+
+// 🔹 Middlewares
 app.use(cors());
-
-// 🔥 REQUIRED FOR FORM DATA
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const port = process.env.PORT || 4000;
-const URI = process.env.MongoDBURI;
+// 🔹 Port & DB
+const PORT = process.env.PORT || 4001;
+const MONGO_URI = process.env.MongoDBURI;
 
+// 🔹 Test route
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Server is running 🚀");
 });
 
-// ✅ THIS WILL NOW WORK
-// app.post("/add_form_data", (req, res) => {
-//   console.log("Form Data:", req.body);
-//   res.send("nasreen i love you");
-// });
-
-
-
-
-
-// MongoDB connection
-mongoose
-  .connect(URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("Connection Error:", err));
-
-// routes
+// 🔹 Routes
 app.use("/book", bookRoute);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// 🔹 MongoDB connection
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    console.log("✅ MongoDB Connected");
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log("❌ MongoDB connection error:", error);
+  });

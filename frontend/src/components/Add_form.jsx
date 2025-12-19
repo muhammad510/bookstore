@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Add_form() {
   const [form, setForm] = useState({
@@ -8,25 +9,28 @@ function Add_form() {
     price: "",
   });
 
+  const [message, setMessage] = useState(""); // success/error
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
+
+    // simple validation
+    if (!form.name || !form.title || !form.category || !form.price) {
+      setMessage("All fields are required!");
+      return;
+    }
 
     try {
-      const res = await fetch("http://localhost:4001/book/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      alert(data.message);
-      setForm({ name: "", title: "", category: "", price: "" }); // reset form
+      const res = await axios.post("http://localhost:4001/book", form);
+      setMessage(res.data.message);
+      setForm({ name: "", title: "", category: "", price: "" });
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:", error.response || error.message);
+      setMessage("Failed to add book");
     }
   };
 
@@ -35,60 +39,50 @@ function Add_form() {
       <form onSubmit={handleSubmit}>
         <h3 className="text-center">Add Book Details</h3>
 
+        {message && <p className="text-center text-danger">{message}</p>}
+
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <div className="row">
-              <div className="col-md-12">
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  placeholder="Enter course name"
-                  value={form.name}
-                  onChange={handleChange}
-                />
-              </div>
+            <input
+              type="text"
+              name="name"
+              className="form-control mb-2"
+              placeholder="Enter course name"
+              value={form.name}
+              onChange={handleChange}
+            />
 
-              <div className="col-md-12">
-                <input
-                  type="text"
-                  name="title"
-                  className="form-control"
-                  placeholder="Enter course Title"
-                  value={form.title}
-                  onChange={handleChange}
-                />
-              </div>
+            <input
+              type="text"
+              name="title"
+              className="form-control mb-2"
+              placeholder="Enter course title"
+              value={form.title}
+              onChange={handleChange}
+            />
 
-              <div className="col-md-12">
-                <input
-                  type="text"
-                  name="category"
-                  className="form-control"
-                  placeholder="Enter course Category"
-                  value={form.category}
-                  onChange={handleChange}
-                />
-              </div>
+            <input
+              type="text"
+              name="category"
+              className="form-control mb-2"
+              placeholder="Enter course category"
+              value={form.category}
+              onChange={handleChange}
+            />
 
-              <div className="col-md-12">
-                <input
-                  type="text"
-                  name="price"
-                  className="form-control"
-                  placeholder="Enter course price"
-                  value={form.price}
-                  onChange={handleChange}
-                />
-              </div>
+            <input
+              type="text"
+              name="price"
+              className="form-control mb-2"
+              placeholder="Enter course price"
+              value={form.price}
+              onChange={handleChange}
+            />
 
-              <div className="col-md-12 mt-3">
-                <button type="submit" className="form-control btn btn-danger">
-                  Add Subject
-                </button>
-              </div>
-            </div>
+            <button type="submit" className="btn btn-danger w-100 mt-2">
+              Add Subject
+            </button>
           </div>
           <div className="col-md-3"></div>
         </div>
