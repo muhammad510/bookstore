@@ -6,6 +6,7 @@ import Course from './Pages/Course'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Add from './Pages/Add'
+import Book_update from './Pages/Book_update'
 import Booklist from './Pages/Book_list'
 
 import { Routes, Route } from "react-router-dom"
@@ -21,11 +22,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/course" element={<Course />} />        
-        <Route path="/book_list" element={<Booklist />} />        
-        <Route path="/add" element={<Add />} />        
-        <Route path="/login" element={<Login />} />        
-        <Route path="/signup" element={<Signup />} />        
+        <Route path="/course" element={<Course />} />
+        <Route path="/book_list" element={<Booklist />} />
+        <Route path="/book/update/:id" element={<Book_update />} />
+        <Route path="/add" element={<Add />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
 
     </>

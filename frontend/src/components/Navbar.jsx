@@ -30,7 +30,7 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/book_list">Book lIst</Link>
+              <Link className="nav-link" to="/book_list">Book List</Link>
             </li>
 
             <li className="nav-item dropdown">

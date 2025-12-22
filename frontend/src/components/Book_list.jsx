@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -79,7 +80,7 @@ function Book_list() {
                   >
                     Delete
                   </button>
-                  <button className="btn btn-warning btn-sm">Update</button>
+                  <Link to={`/book/update/${item._id}`} className="btn btn-warning btn-sm"> Update </Link>
                 </td>
               </tr>
             ))
