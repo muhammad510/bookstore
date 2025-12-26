@@ -73,7 +73,8 @@ function Book_list() {
                 <td>{item.category}</td>
                 <td>{item.title}</td>
                 <td>
-                  <button className="btn btn-info btn-sm me-1">View</button>
+
+                  <Link to={`/book/book_detail/${item._id}`} className="btn btn-info btn-sm me-1"> View </Link>
                   <button
                     className="btn btn-danger btn-sm me-1"
                     onClick={() => deleteBook(item._id)}
